@@ -5,13 +5,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome</h1>
-        <h2>world</h2>
-    </div>
-  <script src="./main.js"></script>
+    <header>
+        <i class="fa-brands fa-youtube"></i>
+        <h2>Code Channel Random Code Generator</h2>
+    </header>
+
+    <main>
+        <section class="submitSection">
+            <h2 id="formHeading" class="offscreen">Enter Your First Name</h2>
+            <form id="submitForm" class="submitForm">
+                <input 
+                    type="text"
+                    class="submitForm__text"
+                    id="submitForm__text"
+                    required
+                    maxlength="20"
+                    Placeholder="Enter First Name"
+                    aria-lebelledby="formHeading">
+                <button id="submitForm__button" class="submitForm__button" aria-label="Submit">
+                    <i class="fa-solid fa-square-check"></i>
+                </button>
+            </form>
+        </section>
+        <section id="suggestionSection" class="suggestionSection">
+            <h2 id="suggestionSection__heading" class="suggestionSection__heading">Suggestions:</h2>
+            <ol></ol>
+            <p>YMMV: Click the name to check if it is already taken.</p>
+        </section>
+    </main>
+  <script src="./js/main.js"></script>
 </body>
 </html>
