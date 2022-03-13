@@ -4,18 +4,20 @@ import { namesOne, namesTwo } from './names.js';
 
 const initApp = () => {
     //add event listener to the form
+
     document.getElementById("submitForm").addEventListener("submit", (event) =>{
         event.preventDefault();
+        //reset/clear out the suggestion
+        clearSuggestions();
+        //generate names
+        const namesArray = generateNames()
+        //display names
+        displayNames(namesArray)
     })
-    //reset/clear out the suggestion
-    clearSuggestions();
-    //generate names
-    const namesArray = generateNames()
-    //display names
-    displayNames(namesArray)
+    
 }
 
-document.addEventListener("DomContentLoaded", initApp)
+document.addEventListener("DomContentLoaded", initApp())
 
 const clearSuggestions = () => {
     const suggestionSection = document.getElementById("suggestionSection");
@@ -43,8 +45,27 @@ const generateNames = () =>  {
 
 
 const displayNames = (namesArray) => {
-    const orderedList = document.querySelector(".suggestionSection__list");
-    orderedList.innerHTML = `<li>Hi</li>` 
+    const rawUserName = document.getElementById("submitForm__text").value;
+    console.log(rawUserName)
+    const userName = sanitizeInput(rawUserName);
+    console.log(userName);
+    const orderedList = document.getElementById("suggestionSection__list");
+    namesArray.map(name => {
+        orderedList.innerHTML += `<li><a href="http://youtube.com/${name}" target="_blank">${name}</a></li>`;
+        orderedList.innerHTML += `<ul>
+            <li><a href="http://youtube.com/${userName}s${name}" target="_blank">${userName}s${name}</a></li>
+            <li><a href="http://youtube.com/${name}with${userName}" target="_blank">${name}with${userName}</a></li>
+        </ul>`
+    })
+    if(suggestionSection.classList.contains("hidden")) {
+        suggestionSection.classList.toggle("hidden");
+    } 
 }
 
-displayNames()
+const sanitizeInput = (inputValue) => {
+    const div = document.createElement('div');
+    div.textContent = inputValue;
+    return div.innerHTML;
+}
+
+
