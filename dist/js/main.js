@@ -46,9 +46,9 @@ const generateNames = () =>  {
 
 const displayNames = (namesArray) => {
     const rawUserName = document.getElementById("submitForm__text").value;
-    console.log(rawUserName)
+    // console.log(rawUserName)
     const userName = sanitizeInput(rawUserName);
-    console.log(userName);
+    // console.log(userName);
     const orderedList = document.getElementById("suggestionSection__list");
     namesArray.map(name => {
         orderedList.innerHTML += `<li><a href="http://youtube.com/${name}" target="_blank">${name}</a></li>`;
